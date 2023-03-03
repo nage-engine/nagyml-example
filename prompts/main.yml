@@ -15,7 +15,6 @@ courier:
     variables:
       # Set a variable as the value returned from a script
       title: (title:Title)
-    sound: page-flip
 
 new_mission:
   prompt:
