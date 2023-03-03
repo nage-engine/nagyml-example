@@ -1,0 +1,51 @@
+# ----------------- Welcome to nage! ----------------- #
+#    This is where your Text Adventure game begins.    #
+# For more info, see: https://github.com/acikek/nage-2 #
+
+metadata:
+  name: New Nagame
+  authors:
+    - Your Name
+  version: 0.1.0
+  # These contact lines are displayed if the game crashes
+  contact:
+  - user @username at example.com
+
+# Configure how your game behaves by default
+settings:
+  # Set 'save' to true and 'debug' to false when releasing your game!
+  save: false
+  debug: true
+  history:
+    size: 15
+  # The default language; players can change it with the `.lang` command
+  lang: en_us
+
+# Configure what happens at the start of the game
+entry:
+  # In what prompt will the player begin?
+  path:
+    file: main
+    prompt: courier
+  background:
+  # These three 'nage:...' variables always refer to the values in the metadata
+  # Run the game to see those values displayed in the background text below!
+  - text: |-
+      <nage:game_name> v<nage:game_version> by <nage:game_authors>
+
+      This is the start of a grand adventure!
+    mode: action
+
+  # You can also give the player extra default state in the entrypoint
+  #
+  # variables:
+  #  name: Stranger
+  #  gold: 100
+  # notes:
+  # - has_no_name
+  # info:
+  # - A Lore Page
+  # log:
+  # - Your character started the game.
+  # - They're still named <name>, though...
+  

@@ -1,0 +1,5 @@
+# You can have multiple display sources using language files in this directory.
+# They aren't used here for clarity, but in practice, it's a very robust option!
+
+prompt.approach: An unfamiliar man approaches.
+prompt.name: What's your name, traveler?

@@ -1,0 +1,59 @@
+# Player begins here
+courier:
+  prompt:
+  - text: An unfamiliar man approaches.
+    mode: action
+  - text: What's your name, traveler?
+  choices:
+  # Take user input to a variable
+  - input:
+      text: Enter your name
+      variable: name
+    # Jump to the prompt below this one
+    jump:
+      prompt: new_mission
+    variables:
+      # Set a variable as the value returned from a script
+      title: (title:Title)
+    sound: page-flip
+
+new_mission:
+  prompt:
+  # Variable interpolation
+  - text: <name>... <title>, yes? Wonderful.
+  choices:
+  - response:
+      text: Who are you?
+    jump:
+      prompt: who_is
+    # This choice can only be used once
+    notes:
+      once: who_is
+  - response:
+      text: What's next?
+    jump:
+      prompt: ending
+
+who_is:
+  prompt:
+  - text: My friend, I'm a courier.
+  - text: New info page unlocked! Run '.info' to view it. # Run .help in-game for all the commands
+    mode: action
+  choices:
+  - jump:
+      prompt: new_mission
+    # You can give players pages describing 
+    # lore/mechanics/etc. as they discover your world
+    info:
+    - Couriers
+
+# The end of the game
+ending:
+  prompt:
+  - text: This letter may be of interest.
+  - text: The contents of the letter led our hero on a brave journey...
+    mode: action
+  choices:
+  - ending:
+    - text: THE END
+      mode: action
