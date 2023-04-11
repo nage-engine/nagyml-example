@@ -4,14 +4,15 @@ courier:
   - text: An unfamiliar man approaches.
     mode: action
   - text: What's your name, traveler?
+    speed:
+      rate: 15 # 15 characters per second
   choices:
   # Take user input to a variable
   - input:
       text: Enter your name
       variable: name
     # Jump to the prompt below this one
-    jump:
-      prompt: new_mission
+    jump: new_mission
     variables:
       # Set a variable as the value returned from a script
       title: (title:Title)
@@ -20,36 +21,42 @@ new_mission:
   prompt:
   # Variable interpolation
   - text: <name>... <title>, yes? Wonderful.
+    wait: 1000 # Delay for 1 second
   choices:
   - response:
       text: Who are you?
-    jump:
-      prompt: who_is
+    jump: who_is
     # This choice can only be used once
     notes:
       once: who_is
   - response:
       text: What's next?
-    jump:
-      prompt: ending
+    jump: ending
 
 who_is:
   prompt:
   - text: My friend, I'm a courier.
   - text: New info page unlocked! Run '.info' to view it. # Run .help in-game for all the commands
-    mode: action
+    mode: system # Use this mode to talk to the player and not their character
   choices:
-  - jump:
-      prompt: new_mission
-    # You can give players pages describing 
-    # lore/mechanics/etc. as they discover your world
+  - jump: new_mission
+    # The next prompt won't display its text
+    display: false
+    # You can give players pages describing lore/mechanics/etc. as they discover your world
     info:
-    - Couriers
+    - name: couriers
+      # Use a display name different than the page ID
+      as: Couriers
 
 # The end of the game
 ending:
   prompt:
   - text: This letter may be of interest.
+    # Play a sound as the text begins printing
+    # You can also attach this key to individual choices
+    sounds:
+    - name: letter
+      channel: sfx
   - text: The contents of the letter led our hero on a brave journey...
     mode: action
   choices:

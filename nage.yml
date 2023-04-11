@@ -1,6 +1,6 @@
-# ----------------- Welcome to nage! ----------------- #
-#    This is where your Text Adventure game begins.    #
-# For more info, see: https://github.com/acikek/nage-2 #
+# ----------------- Welcome to nage! ------------------ #
+#    This is where your Text Adventure game begins.     #
+# For more info, see: https://github.com/acikek/nage-rs #
 
 metadata:
   name: New Nagame
@@ -18,8 +18,19 @@ settings:
   debug: true
   history:
     size: 15
-  # The default language; players can change it with the `.lang` command
-  lang: en_us
+  # To enable sound support, open audio channels to play sounds in
+  channels:
+    sfx: true # true = enabled, disable with .sound
+  text:
+    # The default language; players can change it with the .lang command
+    lang: en_us
+    speed:
+      rate: 40
+    wait: 200
+
+# Depend on certain features with SemVer qualifiers
+dependencies:
+  nage: ">=2.4.2"
 
 # Configure what happens at the start of the game
 entry:
@@ -39,8 +50,8 @@ entry:
   # You can also give the player extra default state in the entrypoint
   #
   # variables:
-  #  name: Stranger
-  #  gold: 100
+  #   name: Stranger
+  #   gold: 100
   # notes:
   # - has_no_name
   # info:
