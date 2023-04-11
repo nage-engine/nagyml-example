@@ -30,7 +30,7 @@ settings:
 
 # Depend on certain features with SemVer qualifiers
 dependencies:
-  nage: ">=2.4.2"
+  nage: ">=2.4.3"
 
 # Configure what happens at the start of the game
 entry:
